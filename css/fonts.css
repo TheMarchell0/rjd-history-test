@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat Regular'), local('Montserrat-Regular'),
+    url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+    url('../fonts/Montserrat-Regular.woff') format('woff'),
+    url('../fonts/Montserrat-Regular.ttf') format('truetype'),
+    url('../fonts/Montserrat-Regular.otf') format('opentype'),
+    url('../fonts/Montserrat-Regular.svg#Montserrat') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat Medium'), local('Montserrat-Medium'),
+    url('../fonts/Montserrat-Medium.woff2') format('woff2'),
+    url('../fonts/Montserrat-Medium.woff') format('woff'),
+    url('../fonts/Montserrat-Medium.ttf') format('truetype'),
+    url('../fonts/Montserrat-Medium.otf') format('opentype'),
+    url('../fonts/Montserrat-Medium.svg#Montserrat') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'),
+    url('../fonts/Montserrat-SemiBold.woff2') format('woff2'),
+    url('../fonts/Montserrat-SemiBold.woff') format('woff'),
+    url('../fonts/Montserrat-SemiBold.ttf') format('truetype'),
+    url('../fonts/Montserrat-SemiBold.otf') format('opentype'),
+    url('../fonts/Montserrat-SemiBold.svg#Montserrat') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat Bold'), local('Montserrat-Bold'),
+    url('../fonts/Montserrat-Bold.woff2') format('woff2'),
+    url('../fonts/Montserrat-Bold.woff') format('woff'),
+    url('../fonts/Montserrat-Bold.ttf') format('truetype'),
+    url('../fonts/Montserrat-Bold.otf') format('opentype'),
+    url('../fonts/Montserrat-Bold.svg#Montserrat') format('svg');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RussianRail G Pro Extended';
+    src: local('RussianRail G Pro Extended'), local('RussianRail G Pro Extended'),
+    url('../fonts/russianrail-g-pro-extended.woff2') format('woff2'),
+    url('../fonts/russianrail-g-pro-extended.woff') format('woff'),
+    url('../fonts/russianrail-g-pro-extended.ttf') format('truetype'),
+    url('../fonts/russianrail-g-pro-extended.otf') format('opentype'),
+    url('../fonts/russianrail-g-pro-extended.svg#russianrail-g-pro-extended') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RussianRail G Pro Extended';
+    src: local('RussianRail G Pro Extended Bold'), local('RussianRail G Pro Extended Bold'),
+    url('../fonts/russianrail-g-pro-extended-bold.woff2') format('woff2'),
+    url('../fonts/russianrail-g-pro-extended-bold.woff') format('woff'),
+    url('../fonts/russianrail-g-pro-extended-bold.ttf') format('truetype'),
+    url('../fonts/russianrail-g-pro-extended-bold.otf') format('opentype'),
+    url('../fonts/russianrail-g-pro-extended-bold.svg#russianrail-g-pro-extended') format('svg');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
