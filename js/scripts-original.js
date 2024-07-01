@@ -1,8 +1,8 @@
 const mainBlock = document.querySelector('.test'),
     nextStepButtons = mainBlock.querySelectorAll('.js-next-button'),
     removeInactionButtons = mainBlock.querySelectorAll('.js-remove-inaction-button'),
-    restartButtons = mainBlock.querySelectorAll('.js-restart');
-inactionModal = mainBlock.querySelector('.inaction');
+    restartButtons = mainBlock.querySelectorAll('.js-restart'),
+    inactionModal = mainBlock.querySelector('.inaction');
 
 let stepNumber = 1,
     answersType = null,
@@ -77,7 +77,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (action === 'enable') {
             inactionTimeout = setTimeout(() => {
                 inactionModal.classList.add('active')
-                restartTimeout = setTimeout(()=> {
+                restartTimeout = setTimeout(() => {
                     restart();
                 }, 15000);
             }, 40000)
@@ -118,7 +118,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 createDecorAnims(nextBlock);
             }
             mainBlock.classList.add('disabled');
-            setTimeout(()=> mainBlock.classList.remove('disabled'), 1000)
+            setTimeout(() => mainBlock.classList.remove('disabled'), 1000)
             activeBlock = nextBlock;
         })
     }
