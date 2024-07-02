@@ -1,5 +1,6 @@
 const mainBlock = document.querySelector('.test'),
     nextStepButtons = mainBlock.querySelectorAll('.js-next-button'),
+    prevStepButtons = mainBlock.querySelectorAll('.js-prev-button'),
     removeInactionButtons = mainBlock.querySelectorAll('.js-remove-inaction-button'),
     restartButtons = mainBlock.querySelectorAll('.js-restart'),
     inactionModal = mainBlock.querySelector('.inaction');
@@ -21,15 +22,20 @@ window.addEventListener('DOMContentLoaded', function () {
             return ['main', 'info_1'];
         }
         if (button.classList.contains('js-info-button')) {
-            if (stepNumber === 10) {
-                stepNumber = 1;
-                gsap.from('.questions_main .questions__content-title', {duration: 1, opacity: 0, delay: 0.5});
-                gsap.from('.questions_main .questions__content-descr', {duration: 1, opacity: 0, delay: 0.9});
-                gsap.from('.questions_main .questions__content-main-button', {opacity: 0, duration: 1, delay: 1.2});
-                return ['info_10', `questions_main`];
+            if (button.classList.contains('js-prev-button')) {
+                stepNumber = --stepNumber;
+                return [`info_${stepNumber + 1}`, `info_${stepNumber}`];
             } else {
-                stepNumber = ++stepNumber;
-                return [`info_${stepNumber - 1}`, `info_${stepNumber}`];
+                if (stepNumber === 10) {
+                    stepNumber = 1;
+                    gsap.from('.questions_main .questions__content-title', {duration: 1, opacity: 0, delay: 0.5});
+                    gsap.from('.questions_main .questions__content-descr', {duration: 1, opacity: 0, delay: 0.9});
+                    gsap.from('.questions_main .questions__content-main-button', {opacity: 0, duration: 1, delay: 1.2});
+                    return ['info_10', `questions_main`];
+                } else {
+                    stepNumber = ++stepNumber;
+                    return [`info_${stepNumber - 1}`, `info_${stepNumber}`];
+                }
             }
         }
         if (button.classList.contains('js-questions-main-button')) {
@@ -123,6 +129,25 @@ window.addEventListener('DOMContentLoaded', function () {
         })
     }
 
+    for (let prevStepButton of prevStepButtons) {
+        prevStepButton.addEventListener('click', () => {
+            const [currentBlock, prevBlock] = changeScreen(prevStepButton);
+            gsap.to(`.${currentBlock}`, {left: '150%', opacity: 0, duration: 1, zIndex: 0});
+            gsap.to(`.${prevBlock}`, {
+                left: '50%',
+                opacity: 1,
+                duration: 1,
+                zIndex: 10,
+            });
+            if (prevBlock.includes('info') || prevBlock.includes('main')) {
+                createDecorAnims(prevBlock);
+            }
+            mainBlock.classList.add('disabled');
+            setTimeout(() => mainBlock.classList.remove('disabled'), 1000)
+            activeBlock = prevBlock;
+        })
+    }
+
     for (let removeInactionButton of removeInactionButtons) {
         removeInactionButton.addEventListener('click', () => {
             if (inactionModal.classList.contains('active')) {
@@ -130,7 +155,7 @@ window.addEventListener('DOMContentLoaded', function () {
             }
             inActionTimeDelay('disable');
             if (!removeInactionButton.classList.contains('js-finish-button')) {
-                setTimeout(() => inActionTimeDelay('enable'), 1000)
+                setTimeout(() => inActionTimeDelay('enable'), 100)
             }
         })
     }
