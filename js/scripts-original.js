@@ -14,7 +14,7 @@ let stepNumber = 1,
 
 window.addEventListener('DOMContentLoaded', function () {
 
-    gsap.to(".main", {opacity: 1, duration: 1, zIndex: 10})
+    gsap.to(".questions_main", {opacity: 1, duration: 1, zIndex: 10})
 
     createDecorAnims('main');
 
@@ -125,7 +125,7 @@ window.addEventListener('DOMContentLoaded', function () {
             const [currentBlock, nextBlock] = changeScreen(nextStepButton);
             if (currentBlock.includes('questions') && !currentBlock.includes('questions_main')) {
                 setTimeout(()=> {
-                    gsap.to(`.${currentBlock}`, {top: '150%', opacity: 0, duration: 1, zIndex: 0});
+                    gsap.to(`.${currentBlock}`, {opacity: 0, duration: 1, zIndex: 0});
                     gsap.fromTo(`.${nextBlock}`, {top: '-50%', opacity: 0}, {
                         top: '50%',
                         opacity: 1,
