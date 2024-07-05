@@ -14,7 +14,7 @@ let stepNumber = 1,
 
 window.addEventListener('DOMContentLoaded', function () {
 
-    gsap.to(".questions_main", {opacity: 1, duration: 1, zIndex: 10})
+    gsap.to(".main", {opacity: 1, duration: 1, zIndex: 10})
 
     createDecorAnims('main');
 
