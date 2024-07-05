@@ -126,8 +126,7 @@ window.addEventListener('DOMContentLoaded', function () {
             if (currentBlock.includes('questions') && !currentBlock.includes('questions_main')) {
                 setTimeout(()=> {
                     gsap.to(`.${currentBlock}`, {opacity: 0, duration: 1, zIndex: 0});
-                    gsap.fromTo(`.${nextBlock}`, {top: '-50%', opacity: 0}, {
-                        top: '50%',
+                    gsap.fromTo(`.${nextBlock}`, {opacity: 0}, {
                         opacity: 1,
                         duration: 1,
                         zIndex: 10,
