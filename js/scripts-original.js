@@ -1,4 +1,5 @@
 const mainBlock = document.querySelector('.test'),
+    sections = mainBlock.querySelectorAll('.test__section'),
     nextStepButtons = mainBlock.querySelectorAll('.js-next-button'),
     prevStepButtons = mainBlock.querySelectorAll('.js-prev-button'),
     removeInactionButtons = mainBlock.querySelectorAll('.js-remove-inaction-button'),
@@ -48,6 +49,14 @@ window.addEventListener('DOMContentLoaded', function () {
         if (button.classList.contains('js-questions-button')) {
             stepNumber = ++stepNumber;
             answersType = button.getAttribute('data-answer');
+            if (button.classList.contains('correct')) {
+                button.classList.add('correct_active');
+                setTimeout(()=> button.classList.remove('correct_active'), 3000)
+            }
+            else {
+                button.classList.add('wrong');
+                setTimeout(()=> button.classList.remove('wrong'), 3000)
+            }
             gsap.from(`.answers_${answersType} .js-answers-button`, {duration: 0.5, opacity: 0, delay: 2.5});
             return [`questions_${stepNumber - 1}`, `answers_${answersType}`];
         }
@@ -70,6 +79,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         if (button.classList.contains('js-finish-button')) {
+            createInitialPositions();
             return ['finish', `main`];
         }
     }
@@ -104,6 +114,7 @@ window.addEventListener('DOMContentLoaded', function () {
             duration: 1,
             zIndex: 10
         });
+        createInitialPositions();
         if (inactionModal.classList.contains('active')) {
             inactionModal.classList.remove('active')
         }
@@ -112,13 +123,27 @@ window.addEventListener('DOMContentLoaded', function () {
     for (let nextStepButton of nextStepButtons) {
         nextStepButton.addEventListener('click', () => {
             const [currentBlock, nextBlock] = changeScreen(nextStepButton);
-            gsap.to(`.${currentBlock}`, {left: '-50%', opacity: 0, duration: 1, zIndex: 0});
-            gsap.fromTo(`.${nextBlock}`, {left: '150%', opacity: 0}, {
-                left: '50%',
-                opacity: 1,
-                duration: 1,
-                zIndex: 10,
-            });
+            if (currentBlock.includes('questions') && !currentBlock.includes('questions_main')) {
+                setTimeout(()=> {
+                    gsap.to(`.${currentBlock}`, {top: '150%', opacity: 0, duration: 1, zIndex: 0});
+                    gsap.fromTo(`.${nextBlock}`, {top: '-50%', opacity: 0}, {
+                        top: '50%',
+                        opacity: 1,
+                        duration: 1,
+                        zIndex: 10,
+                    });
+                }, 700)
+            }
+
+            else {
+                gsap.to(`.${currentBlock}`, {left: '-50%', opacity: 0, duration: 1, zIndex: 0});
+                gsap.fromTo(`.${nextBlock}`, {left: '150%', opacity: 0}, {
+                    left: '50%',
+                    opacity: 1,
+                    duration: 1,
+                    zIndex: 10,
+                });
+            }
 
             if (nextBlock.includes('info') || nextBlock.includes('main')) {
                 createDecorAnims(nextBlock);
@@ -164,6 +189,14 @@ window.addEventListener('DOMContentLoaded', function () {
         restartButton.addEventListener('click', () => {
             restart();
         })
+    }
+
+    function createInitialPositions() {
+        for (let section of sections) {
+            if (section.classList.contains('answers') || section.classList.contains('questions')) {
+                section.style = '';
+            }
+        }
     }
 })
 ;
