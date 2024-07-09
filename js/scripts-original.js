@@ -20,7 +20,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function changeScreen(button) {
         if (button.classList.contains('js-main-button')) {
-            return ['main', 'info_1'];
+            const step = button.getAttribute('data-step');
+
+            if (step === 'info') {
+                return ['main', 'info_1'];
+            }
+
+            else {
+                return ['main', 'questions_main'];
+            }
         }
         if (button.classList.contains('js-info-button')) {
             if (button.classList.contains('js-prev-button')) {
@@ -234,7 +242,7 @@ const anims = {
     'info_5': function () {
         gsap.from('.info-5__decor_1', {duration: 1, y: 200, opacity: 0, delay: 0.5});
         gsap.from('.info-5__decor_2', {x: -120, duration: 1, opacity: 0, delay: 0.7, rotate: -40});
-        gsap.from('.info-5__decor_3', {x: 120, duration: 1, opacity: 0, delay: 0.8, rotate: 45});
+        gsap.from('.info-5__decor_3', {x: 120, duration: 1, opacity: 0, delay: 0.8});
     },
     'info_6': function () {
         gsap.from('.info-6__decor_1', {duration: 1, y: 200, opacity: 0, delay: 0.5});
