@@ -4,7 +4,9 @@ const mainBlock = document.querySelector('.test'),
     prevStepButtons = mainBlock.querySelectorAll('.js-prev-button'),
     removeInactionButtons = mainBlock.querySelectorAll('.js-remove-inaction-button'),
     restartButtons = mainBlock.querySelectorAll('.js-restart'),
-    inactionModal = mainBlock.querySelector('.inaction');
+    inactionModal = mainBlock.querySelector('.inaction'),
+    ticketNumbers = mainBlock.querySelectorAll('.js-ticket-number'),
+    ticketNumbersArray = [567386, 567277, 567366, 567158, 567247, 567255, 567137, 567334, 567234, 567233];
 
 let stepNumber = 1,
     answersType = null,
@@ -14,7 +16,8 @@ let stepNumber = 1,
 
 window.addEventListener('DOMContentLoaded', function () {
 
-    gsap.to(".main", {opacity: 1, duration: 1, zIndex: 10})
+    gsap.to(".finish", {opacity: 1, duration: 1, zIndex: 10})
+    getRandomTickets();
 
     createDecorAnims('main');
 
@@ -273,3 +276,12 @@ const anims = {
         gsap.from('.info-10__decor_3', {x: 150, duration: 1, opacity: 0, delay: 0.9, rotate: 30});
     },
 };
+
+function getRandomTickets() {
+    const randomTicket = ticketNumbersArray[Math.floor(Math.random() * ticketNumbers.length)];
+    const randomTicketArray = Array.from(String(randomTicket), Number);
+    for (let i = 0; i < randomTicketArray.length; i++) {
+        ticketNumbers[i].querySelector('span').innerHTML = randomTicketArray[i];
+    }
+    gsap.from('.js-ticket-number span', {opacity: 0, duration: 0.3, y: 30, delay: 1, stagger: 0.2});
+}

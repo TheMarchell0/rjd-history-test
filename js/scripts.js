@@ -16,8 +16,7 @@ let stepNumber = 1,
 
 window.addEventListener('DOMContentLoaded', function () {
 
-    gsap.to(".finish", {opacity: 1, duration: 1, zIndex: 10})
-    getRandomTickets();
+    gsap.to(".main", {opacity: 1, duration: 1, zIndex: 10})
 
     createDecorAnims('main');
 
@@ -75,6 +74,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (button.classList.contains('js-answers-button')) {
             if (stepNumber === 7) {
                 stepNumber = 1;
+                getRandomTickets();
                 return [`answers_${answersType}`, `finish`];
             } else {
                 gsap.from(`.questions_${stepNumber} .questions__content-title`, {duration: 1, opacity: 0, delay: 0.5});
