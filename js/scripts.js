@@ -6,7 +6,7 @@ const mainBlock = document.querySelector('.test'),
     restartButtons = mainBlock.querySelectorAll('.js-restart'),
     inactionModal = mainBlock.querySelector('.inaction'),
     ticketNumbers = mainBlock.querySelectorAll('.js-ticket-number'),
-    ticketNumbersArray = [567386, 567277, 567366, 567158, 567247, 567255, 567137, 567334, 567234, 567233];
+    ticketNumbersArray = [381462, 294618, 630153];
 
 let stepNumber = 1,
     answersType = null,
@@ -278,7 +278,7 @@ const anims = {
 };
 
 function getRandomTickets() {
-    const randomTicket = ticketNumbersArray[Math.floor(Math.random() * ticketNumbers.length)];
+    const randomTicket = ticketNumbersArray[Math.floor(Math.random() * ticketNumbersArray.length)];
     const randomTicketArray = Array.from(String(randomTicket), Number);
     for (let i = 0; i < randomTicketArray.length; i++) {
         ticketNumbers[i].querySelector('span').innerHTML = randomTicketArray[i];
